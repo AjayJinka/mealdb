@@ -1,11 +1,14 @@
+import { Link } from "react-router-dom";
 const RecipeCard = (props) => {
-  const { strMeal, strMealThumb } = props?.resData;
+  const { strMeal, strMealThumb, idMeal } = props?.resData;
   return (
     <>
       <div className="recipeCard">
         <h3>{strMeal}</h3>
         <img src={strMealThumb} style={{ width: "100px" }}></img>
-        <button>Get Recipe</button>
+        <Link to={"recipe/" + idMeal}>
+          <button>Get Recipe</button>
+        </Link>
       </div>
     </>
   );

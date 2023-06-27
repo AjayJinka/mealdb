@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import RecipeCard from "./RecipeCard";
+import { API_URL } from "../../utils/constants";
 const Body = () => {
   const [apiRes, setApiRes] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
@@ -10,9 +11,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.themealdb.com/api/json/v1/1/search.php?f=b"
-    );
+    const data = await fetch(`${API_URL}search.php?f=b`);
     const json = await data.json();
     console.log(json, "json");
     setApiRes(json?.meals);
