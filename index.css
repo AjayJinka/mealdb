@@ -39,3 +39,7 @@
 .searchContainer {
   padding: 0.5rem 0;
 }
+
+.userCard {
+  border: 1px solid black;
+}
