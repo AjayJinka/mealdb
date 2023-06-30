@@ -1,20 +1,9 @@
-import { useEffect, useState } from "react";
-import { API_URL } from "../../utils/constants";
 import { useParams } from "react-router-dom";
+import useMealRecipe from "../../utils/useMealRecipe";
 
 const MealRecipe = () => {
-  const [mealInfo, setMealInfo] = useState(null);
   const { mealId } = useParams();
-  useEffect(() => {
-    fetchRecipe();
-  }, []);
-
-  const fetchRecipe = async () => {
-    const data = await fetch(`${API_URL}lookup.php?i=${mealId}`);
-    const json = await data.json();
-    //console.log(json, "json");
-    setMealInfo(json?.meals?.[0]);
-  };
+  const mealInfo = useMealRecipe(mealId);
 
   if (!mealInfo) return;
   console.log(mealInfo, "mealInfo");
