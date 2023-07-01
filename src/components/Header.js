@@ -4,9 +4,9 @@ import useOnlineStatus from "../../utils/useOnlineStatus";
 const Header = () => {
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header">
-      <h1>Meal DB</h1>
-      <ul>
+    <div className="flex justify-between p-4 bg-orange-600">
+      <h1 className="font-bold">Meal DB</h1>
+      <ul className="flex gap-10">
         <li>Online Staus: {onlineStatus ? "✅" : "🔴"}</li>
         <li>
           <Link to={"/"}>Home</Link>
