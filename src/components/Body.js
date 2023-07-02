@@ -47,16 +47,18 @@ const Body = () => {
         </button>
         <div className="pl-5 flex gap-1">
           Your recipe's first letter:
-          {lettersArray.map((letter) => {
+          {lettersArray.map((letter, index) => {
             return (
-              <div
-                className="bg-sky-400 rounded-lg px-2 flex justify-center items-center"
+              <button
                 onClick={(e) => {
-                  setRecipeFirstLetter(e.target.textContent.toLowerCase());
+                  const selectedLetter = e.target.textContent.toLowerCase();
+                  setRecipeFirstLetter(selectedLetter);
                 }}
+                className="bg-sky-400 rounded-lg px-2 flex justify-center items-center hover:bg-green-400"
+                key={index}
               >
-                <button>{letter}</button>
-              </div>
+                {letter}
+              </button>
             );
           })}
         </div>

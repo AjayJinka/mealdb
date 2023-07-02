@@ -1,45 +1,23 @@
 import { useParams } from "react-router-dom";
 import useMealRecipe from "../../utils/useMealRecipe";
+import IngredientList from "./IngredientList";
+import InstructionList from "./InstructionList";
+import Video from "./Video";
 
 const MealRecipe = () => {
   const { mealId } = useParams();
   const mealInfo = useMealRecipe(mealId);
-
   if (!mealInfo) return;
   console.log(mealInfo, "mealInfo");
   const { strMeal } = mealInfo;
-  const {
-    strIngredient1,
-    strIngredient2,
-    strIngredient3,
-    strIngredient4,
-    strIngredient5,
-    strIngredient6,
-    strIngredient7,
-    strIngredient8,
-    strIngredient9,
-  } = mealInfo;
-
-  const ingredientArr = [
-    strIngredient1,
-    strIngredient2,
-    strIngredient3,
-    strIngredient4,
-    strIngredient5,
-    strIngredient6,
-    strIngredient7,
-    strIngredient8,
-    strIngredient9,
-  ];
-
   return (
     <div>
-      <h1>{strMeal}</h1>
-      <ul>
-        {ingredientArr.map((ingredient, index) => {
-          return <li key={index}>{ingredient}</li>;
-        })}
-      </ul>
+      <h1 className="p-2 bg-orange-200 text-center font-bold">{strMeal}</h1>
+      <div className="grid grid-cols-[0.5fr_1fr_1fr]">
+        <IngredientList mealInfo={mealInfo} />
+        <Video mealInfo={mealInfo} />
+        <InstructionList mealInfo={mealInfo} />
+      </div>
     </div>
   );
 };
