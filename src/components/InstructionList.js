@@ -10,10 +10,13 @@ const InstructionList = ({ mealInfo }) => {
         Instructions
       </h1>
       <ul>
-        {instructionsArray.map((instruction) => {
+        {instructionsArray.map((instruction, index) => {
           instruction = instruction.trim();
           return (
-            <li className="bg-orange-200 m-1 rounded-lg text-center">
+            <li
+              className="bg-orange-200 m-1 rounded-lg text-center"
+              key={index}
+            >
               {instruction}
             </li>
           );
