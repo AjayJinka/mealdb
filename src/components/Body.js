@@ -6,6 +6,7 @@ const Body = () => {
   const [filteredRes, setFilteredRes] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [recipeFirstLetter, setRecipeFirstLetter] = useState("a");
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const lettersArray = letters.split("");
 
@@ -53,8 +54,12 @@ const Body = () => {
                 onClick={(e) => {
                   const selectedLetter = e.target.textContent.toLowerCase();
                   setRecipeFirstLetter(selectedLetter);
+                  setSelectedIndex(index);
                 }}
-                className="bg-sky-400 rounded-lg px-2 flex justify-center items-center hover:bg-green-400"
+                className={
+                  (index === selectedIndex ? "bg-green-400" : "bg-sky-400") +
+                  " rounded-lg px-2 flex justify-center items-center hover:bg-green-400"
+                }
                 key={index}
               >
                 {letter}
