@@ -1,5 +1,6 @@
 const IngredientList = ({ mealInfo }) => {
   let ingredArray = [];
+  console.log(mealInfo, "mealInfo");
   for (key in mealInfo) {
     if (mealInfo[key] && String(key).startsWith("strIngredient")) {
       const ingredNum = Number(String(key).replace(/\D/g, ""));
